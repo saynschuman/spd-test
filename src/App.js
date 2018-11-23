@@ -1,27 +1,41 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import * as firebase from "firebase/app";
+import "firebase/database";
+import "firebase/auth";
+
+const config = {
+  apiKey: "AIzaSyAe9B2FhNok7R1NuAhc2UaZrjfvdWU9-W0",
+  authDomain: "emerald-road-216311.firebaseapp.com",
+  databaseURL: "https://emerald-road-216311.firebaseio.com",
+  projectId: "emerald-road-216311",
+  storageBucket: "emerald-road-216311.appspot.com",
+  messagingSenderId: "1068042055502"
+};
+firebase.initializeApp(config);
+
+var ref = firebase.database().ref();
+ref.on("value", snapshot => {
+  console.log(snapshot.val());
+});
 
 class App extends Component {
+  add = () => {
+    ref
+      .set({
+        name: "Los Angeles",
+        state: "CA",
+        country: "USA"
+      })
+      .then(function() {
+        console.log("Document successfully written!");
+      })
+      .catch(function(error) {
+        console.error("Error writing document: ", error);
+      });
+  };
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+    return <button onClick={this.add}>Click</button>;
   }
 }
 
