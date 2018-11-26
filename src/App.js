@@ -22,10 +22,8 @@ ref.on("value", snapshot => {
 class App extends Component {
   add = () => {
     ref
-      .set({
-        name: "Los Angeles",
-        state: "CA",
-        country: "USA"
+      .update({
+        data: null
       })
       .then(function() {
         console.log("Document successfully written!");
