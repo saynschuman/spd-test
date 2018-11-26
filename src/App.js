@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import "./api/config";
-import { set, update, remove } from "./api";
+import Root from "./components/Root";
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <button onClick={() => update("data", null)}>Click</button>;
+        <Root />
       </Provider>
     );
   }

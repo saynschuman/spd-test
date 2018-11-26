@@ -1,4 +1,6 @@
-import * as firebase from "firebase";
+import * as firebase from "firebase/app";
+import "firebase/database";
+import "firebase/auth";
 
 export const ref = firebase.database().ref();
 // ref.on("value", snapshot => {
