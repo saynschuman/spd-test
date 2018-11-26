@@ -1,8 +1,6 @@
-import * as firebase from "firebase/app";
-import "firebase/database";
-import "firebase/auth";
+import { firebaseInited } from "./config";
 
-export const ref = firebase.database().ref();
+export const ref = firebaseInited.db.ref();
 // ref.on("value", snapshot => {
 //   console.log(snapshot.val());
 // });
